@@ -1,0 +1,38 @@
+@import 'bootstrap/bootstrap.scss';
+@import 'mixins.scss';
+@import 'variables.scss';
+
+#spinner {
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  color: white;
+  display: none;
+  left: 50%;
+  margin: 30px 0 0 -150px;
+  position: absolute;
+  padding: 50px;
+  text-align: center;
+  width: 300px;
+}
+
+.typeahead {
+    @include unstyled;
+    width: 85%;
+    border: 1px solid shade($autocompleteHighlight, 20);
+    li {
+        line-height: 1.4;
+//        padding: .2em .3em;
+        &.active {
+            background: lighten($grey, 10);
+        }
+        a {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: $blue;
+            font-weight: normal;
+
+        }
+        
+    }
+}

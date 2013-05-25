@@ -1,8 +1,12 @@
-
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+module.exports = {
+    
+    index: function(req,res){
+        // var env = process.env.ENVIRONMENT === "production" ? 
+            
+        res.render('index.html', { 
+            title: "We the People Dashboard",
+            scripts: '[typeahead.js]'
+            }
+        );
+    }
 };

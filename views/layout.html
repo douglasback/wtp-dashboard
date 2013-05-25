@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>We the People Dashboard</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" >
+        
+        <link rel="stylesheet" href="/css/styles.dev.css">
+        {{#if google_analytics_id}}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '{{google_analytics_id}}']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        {{/if}}
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">We the People Dashboard</a>
+                <ul class="nav">
+                    <li><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+        {{{body}}}
+        </div> <!-- /.container-fluid -->
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="js/lib/underscore.js"></script>
+        <script src="js/lib/typeahead.js"></script>
+        <script src="js/search.js"></script>
+
+    </body>
+</html>
