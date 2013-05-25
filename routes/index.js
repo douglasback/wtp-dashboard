@@ -10,13 +10,14 @@ module.exports = {
         );
     },
 
-	signaturesByDate : function(req,res){
+	signaturesBy : function(req,res){
 		
 		var mysql = require('mysql');
 		
 		var parse  = require('url').parse;
-		var petition_id = req.query.petition_id;
-		var signatures_by_date_sql = 'select create_dt, count(*) as signatures  FROM wtp_data_signatures where petition_id=? group by create_dt';
+		var grouping = req.params.grouping === "zip" ? "zip" : "create_dt";
+		var petition_id = req.params.petition_id;
+		var signatures_by_date_sql = 'select ' + grouping +', count(*) as signatures  FROM wtp_data_signatures where petition_id=? group by 1';
 		var db_url = parse(process.env.DATABASE_URL);
 		var auth = db_url.auth.split(":");
 		
