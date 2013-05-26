@@ -38,7 +38,7 @@ app.use(function(req,res,next){
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-console.log(routes);
+
 app.get('/', routes.index);
 app.get("/:petition_id/signatures/:grouping", routes.signaturesBy);
 app.get("/:petition_id/sync", routes.sync);
