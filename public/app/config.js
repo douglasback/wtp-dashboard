@@ -7,7 +7,7 @@ require.config({
 
   paths: {
     // Use the underscore build of Lo-Dash to minimize incompatibilities.
-    "lodash": "../vendor/jam/lodash/dist/lodash.underscore"
+    "lodash": "../vendor/jam/lodash/lodash.underscore.min"
 
     // Put additional paths here.
   },
@@ -20,7 +20,14 @@ require.config({
   },
 
   shim: {
-    // Put shims here.
+    // // Put shims here.
+    // backbone: {
+    //   deps: ["lodash", "jquery"],
+    //   exports: "Backbone"
+    // },
+    // handlebars: {
+    //   exports: "Handlebars"
+    // },
   }
 
 });

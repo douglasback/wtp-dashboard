@@ -31,6 +31,6 @@ function(app){
         template: '',
         tagName: 'div'
     });
-}
 
-);
+    return Petition;
+});
