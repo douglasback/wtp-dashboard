@@ -46,7 +46,7 @@ var svg = d3.select("body").append("svg")
 
 queue()
     .defer(d3.json, "/js/us.json")
-    .defer(d3.tsv, "/{{petition_id}}/fips.tsv", function(d) { rateById.set(d.id, +d.signatures); })
+    .defer(d3.tsv, "/{{petition_id}}/fips.tsv", function(d) { rateById.set(parseInt(d.id, 10), +d.signatures); })
     .await(ready);
 
 function ready(error, us) {
@@ -55,7 +55,7 @@ function ready(error, us) {
     .selectAll("path")
       .data(topojson.feature(us, us.objects.counties).features)
     .enter().append("path")
-      .attr("class", function(d) {  return quantize(rateById.get(d.id));  })
+      .attr("class", function(d) {  return quantize(rateById.get(parseInt(d.id, 10)));  })
       .attr("d", path);
 
   svg.append("path")
