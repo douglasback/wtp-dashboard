@@ -24,6 +24,11 @@ var jam = {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
+        },
+        {
+            "name": "typeahead",
+            "location": "../vendor/jam/typeahead",
+            "main": "typeahead.js"
         }
     ],
     "version": "0.2.15",
@@ -45,6 +50,12 @@ var jam = {
         },
         "underscore": {
             "exports": "_"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "typeahead"
         }
     }
 };
@@ -76,6 +87,11 @@ if (typeof require !== "undefined" && require.config) {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
+        },
+        {
+            "name": "typeahead",
+            "location": "../vendor/jam/typeahead",
+            "main": "typeahead.js"
         }
     ],
     "shim": {
@@ -96,6 +112,12 @@ if (typeof require !== "undefined" && require.config) {
         },
         "underscore": {
             "exports": "_"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "typeahead"
         }
     }
 });
@@ -127,6 +149,11 @@ else {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
+        },
+        {
+            "name": "typeahead",
+            "location": "../vendor/jam/typeahead",
+            "main": "typeahead.js"
         }
     ],
     "shim": {
@@ -147,6 +174,12 @@ else {
         },
         "underscore": {
             "exports": "_"
+        },
+        "typeahead": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "typeahead"
         }
     }
 };

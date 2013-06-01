@@ -4,10 +4,11 @@ define([
     "modules/petition",
     "modules/search",
     "backbone.layoutmanager",
-    "underscore"
+    "underscore",
+    "typeahead"
 ],
 
-function(app, Petition, Search, Layout, _) {
+function(app, Petition, Search, Layout, _, typeahead) {
 
     // Defining the application router, you can attach sub routers here.
     var Router = Backbone.Router.extend({
