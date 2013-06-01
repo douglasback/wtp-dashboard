@@ -28,7 +28,14 @@ function(app){
 
 
     });
+    Petition.Views.Dashboard = Backbone.View.extend({
+        template: 'dashboard',
+        tagName: 'div',
+        serialize: function() {
+            return this.model.toJSON();
+        }
 
+    });
     Petition.Views.Progress = Backbone.View.extend({
         template: '',
         tagName: 'div'

@@ -14,7 +14,7 @@ function(app, Petition, Search, Layout, _, typeahead) {
     var Router = Backbone.Router.extend({
         routes: {
             "" : "home",
-            "/dashboard/:id": "dashboard"
+            "dashboard/:id": "dashboard"
         },
         
         initialize: function(){
@@ -41,7 +41,7 @@ function(app, Petition, Search, Layout, _, typeahead) {
                 var offset = offset || 0;
                 $.getJSON(ENDPOINT + '?limit=1000&offset=' + offset + '&callback=?', function(data){
                 var resultset = data.metadata.resultset,
-                        results = data.results;
+                    results = data.results;
 
                 petitionData = petitionData.concat(results);
                 if (resultset.count - offset > resultset.limit){
@@ -66,9 +66,13 @@ function(app, Petition, Search, Layout, _, typeahead) {
 
         },
         dashboard: function(id) {
-            var petition = new Petition({
-                id: id
-            });
+            console.log(id);
+            console.log(petitions.get(id));
+            var dashboard = new Petition.Views.Dashboard({ model: petitions.get(id) });
+            console.log("rendering dashboard");
+            $("#main").empty().append(dashboard.el);
+            dashboard.render();
+            
         }
     });
 
