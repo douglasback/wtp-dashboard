@@ -14,7 +14,7 @@ function(app, _){
 
     Dashboard.Views.Dashboard = Backbone.View.extend({
         registerPanel: function (PanelView, options) {
-            var $panel = $('<div class="panel">');
+            var $panel = $('<div class="panel petition-data">');
             this.$el.append($panel);
             options = _.extend({
                 // model: Model,
