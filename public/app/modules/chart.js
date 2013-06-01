@@ -10,10 +10,10 @@ define([
 function(app, Petition) {
 
     // Create a new module.
-    var Map = app.module();
+    var Chart = app.module();
 
     // Default View.
-    Map.Views.Panel = Backbone.View.extend({
+    Chart.Views.Panel = Backbone.View.extend({
         initialize: function () {
             this.petitionID = this.options.id;
             this.draw();
@@ -32,7 +32,7 @@ function(app, Petition) {
     });
 
     // Return the module for AMD compliance.
-    return Map;
+    return Chart;
 
 });
 }());
