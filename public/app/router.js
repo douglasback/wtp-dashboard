@@ -62,6 +62,7 @@ function(app, Dashboard, Petition, Search, MapFIPS, Chart, Layout, _, Bootstrap)
             $('#main').empty().append($container);
             var petitions = Petition.get();
             var petition = petitions.get(id);
+            petition.getShares();
             var dashboard = new Dashboard.Views.Dashboard({
                 el: $container
             });

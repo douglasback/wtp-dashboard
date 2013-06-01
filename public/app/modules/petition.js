@@ -19,7 +19,7 @@ function(app, moment){
         initialize: function(){
             this.setDaysRemaining();
             this.setProgress();
-            this.getShares();
+            //this.getShares();
             
         },
 
@@ -96,8 +96,7 @@ function(app, moment){
     Petition.Views.Social = Backbone.View.extend({
         template: 'social',
         initialize: function(){
-            this.render();
-            this.model.bind("change", this.render);
+            this.model.bind("change", this.render, this);
         },
         serialize: function() {
             return this.model.toJSON();
