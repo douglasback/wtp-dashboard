@@ -1,3 +1,4 @@
+(function () {
 // Search module
 define([
     // Application.
@@ -28,14 +29,16 @@ function(app, Petition) {
         events: {
             'click #petition-submit' : 'loadPetition'
         },
-        
+
         loadPetition: function(e){
             e.preventDefault();
             var self = this;
             console.log(self.$('#petition-search').val());
-            var petitionId = window.petitions.find(function(p){
-                return self.$('#petition-search').val() === p.get("title");
-            }).get("id");
+            var petitionId = Petition.Collection
+                .find(function(petition){
+                    return self.$('#petition-search').val() === petition.get("title");
+                })
+                .get("id");
             app.router.navigate("dashboard/" + petitionId, true);
         }
     });
@@ -44,3 +47,4 @@ function(app, Petition) {
     return Search;
 
 });
+}());

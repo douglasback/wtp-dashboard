@@ -1,3 +1,4 @@
+(function () {
 define([
     // Application.
     "app",
@@ -9,6 +10,8 @@ define([
 ],
 
 function(app, Petition, Search, Layout, _, Bootstrap) {
+
+    var petitions;
 
     // Defining the application router, you can attach sub routers here.
     var Router = Backbone.Router.extend({
@@ -29,37 +32,24 @@ function(app, Petition, Search, Layout, _, Bootstrap) {
             this.loadPetitions();
         },
 
-        loadPetitions: function(offset){
-            var petitionData = [],
-                petitions = [], // this will be an array containing the title and ID
-                petitionTitles, // used for the typeahead/autocomplete input
-                ENDPOINT = 'https://api.whitehouse.gov/v1/petitions.jsonp';
+        loadPetitions: function (offset) {
+            var endpoint = 'https://api.whitehouse.gov/v1/petitions.jsonp';
 
             $('#spinner').fadeIn();
 
-            var loader = function(offset){
-                var offset = offset || 0;
-                $.getJSON(ENDPOINT + '?limit=1000&offset=' + offset + '&callback=?', function(data){
-                var resultset = data.metadata.resultset,
-                    results = data.results;
-
-                petitionData = petitionData.concat(results);
-                if (resultset.count - offset > resultset.limit){
-                    loader(resultset.offset + resultset.limit + 1);
-                } else {
-                    console.log(Petition);
-                    window.petitions = new Petition.Collection(petitionData);
+            Petition.load({
+                uri: endpoint,
+                offset: offset,
+                limit: null,
+                callback: function () {
+                    var petitions = Petition.get();
                     $('#petition-search').typeahead({
-                        source: window.petitions.pluck("title"),
+                        source: petitions.pluck("title"),
                         minLength: 2
                     });
                     $('#spinner').fadeOut();
                 }
-
             });
-
-            }
-            loader.call(this);
 
         },
         loader: function(offset){
@@ -78,3 +68,4 @@ function(app, Petition, Search, Layout, _, Bootstrap) {
     return Router;
 
 });
+}());
