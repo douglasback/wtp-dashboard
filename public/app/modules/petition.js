@@ -31,9 +31,11 @@ function(app){
 
 
     });
-    Petition.Views.Dashboard = Backbone.View.extend({
+    Petition.Views.Panel = Backbone.View.extend({
         template: 'dashboard',
-        tagName: 'div',
+        initialize: function () {
+            this.render();
+        },
         serialize: function() {
             return this.model.toJSON();
         }
