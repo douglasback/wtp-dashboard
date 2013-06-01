@@ -32,7 +32,6 @@ function(app, _, Search, Petition) {
             });
         }
     });
-
     return Router;
 
 });
