@@ -5866,3 +5866,16 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
   color: #0772a1;
   font-weight: normal;
 }
+
+.petition-data {
+  text-align: center;
+}
+.petition-data .super {
+  font-size: 4.8em;
+  line-height: 1;
+}
+.petition-data h4 {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #888;
+}

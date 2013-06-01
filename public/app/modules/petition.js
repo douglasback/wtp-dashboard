@@ -2,10 +2,11 @@
 
 define([
     'app',
+    'moment'
 ],
 
 
-function(app){
+function(app, moment){
 
     var Petition = app.module();
 
@@ -14,6 +15,29 @@ function(app){
             return {
                 petition: {}
             }
+        },
+        initialize: function(){
+            this.setDaysRemaining();
+            this.setProgress();
+        },
+
+        setDaysRemaining: function(){
+            var deadline = this.get("deadline"),
+                now = moment();
+
+            // If petition is still open, calculate days remaining
+            if (this.get("status") === "open"){
+                this.set({
+                    daysRemaining: moment.unix(deadline).diff(now, 'days')
+                });
+            }
+        },
+        setProgress: function(){
+            var progress;
+            progress = (this.get("signatureCount") / this.get("signatureThreshold")) * 100;
+            this.set({
+                progress: progress
+            });
         }
     });
 
@@ -42,6 +66,7 @@ function(app){
     Petition.Views.Progress = Backbone.View.extend({
         template: 'progress',
         tagName: 'div',
+        className: 'petition-data',
         serialize: function() {
             return this.model.toJSON();
         }
