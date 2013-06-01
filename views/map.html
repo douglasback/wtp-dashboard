@@ -34,7 +34,7 @@ var width = 960,
 var rateById = d3.map();
 
 var quantize = d3.scale.quantize()
-    .domain([0, 100])
+    .domain([0, 30])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 

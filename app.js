@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , dashboard = require('./routes/dashboard')
+  , legislator = require('./routes/legislator')
   , http = require('http')
   , hbs = require('hbs')
   , validator = require('express-validator')
@@ -47,7 +48,7 @@ app.get("/:petition_id/signature-chart", routes.signaturesByDateChart);
 app.get("/twitter", routes.twitter);
 app.get("/:petition_id/map", routes.map);
 app.get("/:petition_id/fips.tsv", routes.fips);
-
+app.get("/:petition_id/legislator", legislator.legislator);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
