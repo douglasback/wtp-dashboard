@@ -44,6 +44,9 @@ app.get("/:petition_id/signatures/:grouping", routes.signaturesBy);
 app.get("/:petition_id/sync", routes.sync);
 app.get('/dashboard/:id', dashboard.index);
 app.get("/:petition_id/signature-chart", routes.signaturesByDateChart);
+app.get("/twitter", routes.twitter);
+app.get("/:petition_id/map", routes.map);
+app.get("/:petition_id/fips.tsv", routes.fips);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

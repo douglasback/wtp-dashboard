@@ -31,7 +31,8 @@
     "hbs": "~2.0.x",
     "express-validator": "0.3.x",
     "request": "2.21.0",
-    "mysql": "2.0.0-alpha8"
+    "mysql": "2.0.0-alpha8",
+	"twitter": "0.1.18"
 
   },
   "engines": {

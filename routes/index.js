@@ -17,7 +17,7 @@ module.exports = {
 		var petition_id = req.params.petition_id;
 		var signatures_by_date_sql = 'select ' + grouping +', count(*) as signatures  FROM wtp_data_signatures where petition_id=? group by 1';
 		
-		var client = mysql.createConnection("mysql2://wtpdashboard:differentdefault@wtpdashboard.c1g7kuqneikk.us-east-1.rds.amazonaws.com/wtpdashboard");//(process.env.DATABASE_URL);
+		var client = mysql.createConnection(process.env.DATABASE_URL);
 		client.query(signatures_by_date_sql, petition_id, function(er, result){
 			
 		var counter = 0;
@@ -39,10 +39,35 @@ module.exports = {
 		 }
 		  res.render("datechart.html", {
 				data : JSON.stringify(data)
+				, layout: false 
 			});
 		});
 		
 	},
+
+	fips : function(req,res){
+		
+		var mysql = require('mysql');
+		
+		var grouping = req.params.grouping === "zip" ? "zip" : "create_dt";
+		var petition_id = req.params.petition_id;
+		var signatures_by_date_sql = 'select fip, count(*) as signatures FROM wtp_data_signatures inner join zip_to_fip on zip=zipcode WHERE petition_id=? GROUP BY 1';
+		
+		var client = mysql.createConnection(process.env.DATABASE_URL);
+		client.query(signatures_by_date_sql, petition_id, function(er, result){
+				var tsv = ["id\tsignatures"];
+				
+				for(var i = 0; i<result.length; i++){
+					tsv.push(result[i].fip+"\t"+result[i].signatures);
+				}
+				tsv = tsv.join("\n");
+			  	res.setHeader('Content-Type', 'text/plain');
+			  	res.setHeader('Content-Length', tsv.length);
+				res.end(tsv);
+		});
+
+	},
+
 
 	signaturesBy : function(req,res){
 		
@@ -58,6 +83,29 @@ module.exports = {
 		});
 
 	},
+	map: function(req,res){
+		res.render("map.html", { petition_id : req.params.petition_id , layout: false });
+	},
+	
+	twitter : function(req, res){
+
+		var util = require('util'),
+		    twitter = require('twitter');
+	//	twitter.VERSION = "1.1";
+		var twit = new twitter({
+		    consumer_key: 'soHHRnSZjpFtuy6lclK8qg',
+		    consumer_secret: '8nolGK9pQ4NWRWRTN6nvlytj9nBxI7Pk7gT1UPl5n18',
+		    access_token_key: '15648633-2wSKlEcgzEs33MxWMPZkBVmtG9sDPz4liItiuOSo',
+		    access_token_secret: 'wamuoe0ohpfcRNjgAY0v0WfRWsILS0yKtQvmWBEyNbY'
+		});
+		var x = twit.get('/search/tweets.json', {"count":100, q: req.query.q}, function(data) {
+		    res.json(data);
+		});
+		console.log(x);
+		
+		
+	},
+	
 	sync : function(req, res){
 		
 		var request = require('request');
