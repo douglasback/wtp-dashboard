@@ -1,4 +1,6 @@
-define(['app'],
+define([
+    'app',
+],
 
 
 function(app){
