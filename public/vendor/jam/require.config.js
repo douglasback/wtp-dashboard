@@ -30,6 +30,11 @@ var jam = {
             "main": "./dist/lodash.compat.js"
         },
         {
+            "name": "moment",
+            "location": "../vendor/jam/moment",
+            "main": "moment.js"
+        },
+        {
             "name": "typeahead.js",
             "location": "../vendor/jam/typeahead"
         },
@@ -87,6 +92,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "./dist/lodash.compat.js"
         },
         {
+            "name": "moment",
+            "location": "../vendor/jam/moment",
+            "main": "moment.js"
+        },
+        {
             "name": "typeahead.js",
             "location": "../vendor/jam/typeahead"
         },
@@ -141,6 +151,11 @@ else {
             "name": "lodash",
             "location": "../vendor/jam/lodash",
             "main": "./dist/lodash.compat.js"
+        },
+        {
+            "name": "moment",
+            "location": "../vendor/jam/moment",
+            "main": "moment.js"
         },
         {
             "name": "typeahead.js",
