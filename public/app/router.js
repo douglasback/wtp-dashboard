@@ -18,7 +18,7 @@ function(app, _, Search, Petition) {
         home: function(){
             var search = new Search.Views.Layout();
             console.log('rendering home');
-            $("body").empty().append(search.el);
+            $("#main").empty().append(search.el);
             search.render();
             // app.useLayout("layouts/main").setViews({
             //     'search': new Search.Views.Layout({
@@ -30,7 +30,6 @@ function(app, _, Search, Petition) {
             var petition = new Petition({
                 id: id
             });
-            $('body').append('<h1>Deal with it</h1>');
         }
     });
 
