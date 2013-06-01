@@ -6,12 +6,13 @@ define([
     "modules/petition",
     "modules/search",
     "modules/mapFIPS",
+    "modules/chart",
     "backbone.layoutmanager",
     "underscore",
     "bootstrap-amd"
 ],
 
-function(app, Dashboard, Petition, Search, MapFIPS, Layout, _, Bootstrap) {
+function(app, Dashboard, Petition, Search, MapFIPS, Chart, Layout, _, Bootstrap) {
 
     var petitions;
 
@@ -42,7 +43,6 @@ function(app, Dashboard, Petition, Search, MapFIPS, Layout, _, Bootstrap) {
             Petition.load({
                 uri: endpoint,
                 offset: offset,
-                limit: 10,
                 callback: function () {
                     var petitions = Petition.get();
                     $('#petition-search').typeahead({
@@ -68,6 +68,7 @@ function(app, Dashboard, Petition, Search, MapFIPS, Layout, _, Bootstrap) {
             
             dashboard.registerPanel(Petition.Views.Panel, {model: petition});
             dashboard.registerPanel(MapFIPS.Views.Panel, {id: petition.get('id')});
+            dashboard.registerPanel(Chart.Views.Panel, {id: petition.get('id')});
             dashboard.registerPanel(Petition.Views.Progress, { model: petitions.get(id) });
             dashboard.registerPanel(Petition.Views.Social, { model: petitions.get(id) })
         }
