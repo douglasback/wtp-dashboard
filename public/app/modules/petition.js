@@ -40,8 +40,11 @@ function(app){
 
     });
     Petition.Views.Progress = Backbone.View.extend({
-        template: '',
-        tagName: 'div'
+        template: 'progress',
+        tagName: 'div',
+        serialize: function() {
+            return this.model.toJSON();
+        }
     });
 
     // Initialize the collection.

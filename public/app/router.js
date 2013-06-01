@@ -57,9 +57,9 @@ function(app, Petition, Search, Layout, _, Bootstrap) {
         },
         dashboard: function(id) {
             var petitions = Petition.get();
-            var dashboard = new Petition.Views.Dashboard({ model: petitions.get(id) });
-            $("#main").empty().append(dashboard.el);
-            dashboard.render();
+            var progress = new Petition.Views.Progress({ model: petitions.get(id) });
+            $("#main").empty().append(progress.el);
+            progress.render();
 
         }
     });
