@@ -11,6 +11,15 @@ var jam = {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -21,17 +30,16 @@ var jam = {
             "main": "./lodash.js"
         },
         {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
+        },
+        {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
-        },
-        {
-            "name": "typeahead",
-            "location": "../vendor/jam/typeahead",
-            "main": "typeahead.js"
         }
     ],
-    "version": "0.2.15",
+    "version": "0.2.17",
     "shim": {
         "backbone": {
             "deps": [
@@ -50,12 +58,6 @@ var jam = {
         },
         "underscore": {
             "exports": "_"
-        },
-        "typeahead": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "typeahead"
         }
     }
 };
@@ -74,6 +76,15 @@ if (typeof require !== "undefined" && require.config) {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -84,14 +95,13 @@ if (typeof require !== "undefined" && require.config) {
             "main": "./lodash.js"
         },
         {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
+        },
+        {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
-        },
-        {
-            "name": "typeahead",
-            "location": "../vendor/jam/typeahead",
-            "main": "typeahead.js"
         }
     ],
     "shim": {
@@ -112,12 +122,6 @@ if (typeof require !== "undefined" && require.config) {
         },
         "underscore": {
             "exports": "_"
-        },
-        "typeahead": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "typeahead"
         }
     }
 });
@@ -136,6 +140,15 @@ else {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -146,14 +159,13 @@ else {
             "main": "./lodash.js"
         },
         {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
+        },
+        {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
-        },
-        {
-            "name": "typeahead",
-            "location": "../vendor/jam/typeahead",
-            "main": "typeahead.js"
         }
     ],
     "shim": {
@@ -174,12 +186,6 @@ else {
         },
         "underscore": {
             "exports": "_"
-        },
-        "typeahead": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "typeahead"
         }
     }
 };

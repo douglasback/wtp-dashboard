@@ -38,5 +38,18 @@
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
+  },
+  "jam": {
+    "packageDir": "./public/vendor/jam",
+    "baseUrl": "./public/app",
+
+    "dependencies": {
+      "backbone": "*",
+      "jquery": "*",
+      "lodash": "*",
+      "backbone.layoutmanager": "*",
+      "handlebars": "*",
+      "bootstrap-amd":"*"
+    }
   }
 }
