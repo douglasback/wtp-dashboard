@@ -1,15 +1,12 @@
 // Search module
 define([
-  // Application.
-  'app',
-  'modules/petition',
-  'backbone',
-  'underscore',
-  'backbone.layoutmanager'
+    // Application.
+    'app',
+    'router'
 ],
 
 // Map dependencies from above array.
-function(app, _, Backbone, LayoutManager) {
+function(app, Router) {
 
     // Create a new module.
     var Search = app.module();
@@ -27,8 +24,14 @@ function(app, _, Backbone, LayoutManager) {
     // Default View.
     Search.Views.Layout = Backbone.Layout.extend({
         template: "search",
-        manage: true
+        events: {
+            'click #petition-submit' : 'loadPetition'
+        },
         
+        loadPetition: function(e){
+            e.preventDefault();
+            Router.navigate("dashboard");
+        }
     });
 
     // Return the module for AMD compliance.
