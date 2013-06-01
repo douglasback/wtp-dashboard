@@ -5,10 +5,10 @@ define([
     "modules/search",
     "backbone.layoutmanager",
     "underscore",
-    "typeahead"
+    "bootstrap-amd"
 ],
 
-function(app, Petition, Search, Layout, _, typeahead) {
+function(app, Petition, Search, Layout, _, Bootstrap) {
 
     // Defining the application router, you can attach sub routers here.
     var Router = Backbone.Router.extend({

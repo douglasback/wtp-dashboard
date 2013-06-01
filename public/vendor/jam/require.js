@@ -2012,6 +2012,15 @@ var jam = {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -2022,12 +2031,16 @@ var jam = {
             "main": "./lodash.js"
         },
         {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
+        },
+        {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "underscore.js"
         }
     ],
-    "version": "0.2.15",
+    "version": "0.2.17",
     "shim": {
         "backbone": {
             "deps": [
@@ -2064,6 +2077,15 @@ if (typeof require !== "undefined" && require.config) {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -2072,6 +2094,10 @@ if (typeof require !== "undefined" && require.config) {
             "name": "lodash",
             "location": "../vendor/jam/lodash",
             "main": "./lodash.js"
+        },
+        {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
         },
         {
             "name": "underscore",
@@ -2115,6 +2141,15 @@ else {
             "main": "backbone.layoutmanager.js"
         },
         {
+            "name": "bootstrap-amd",
+            "location": "../vendor/jam/bootstrap-amd"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "handlebars.js"
+        },
+        {
             "name": "jquery",
             "location": "../vendor/jam/jquery",
             "main": "dist/jquery.js"
@@ -2123,6 +2158,10 @@ else {
             "name": "lodash",
             "location": "../vendor/jam/lodash",
             "main": "./lodash.js"
+        },
+        {
+            "name": "typeahead.js",
+            "location": "../vendor/jam/typeahead"
         },
         {
             "name": "underscore",
