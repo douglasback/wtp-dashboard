@@ -30,15 +30,13 @@ function(app, Petition) {
             'click #petition-submit' : 'loadPetition'
         },
 
-        loadPetition: function(e){
-            e.preventDefault();
-            var self = this;
-            console.log(self.$('#petition-search').val());
-            var petitionId = Petition.Collection
-                .find(function(petition){
-                    return self.$('#petition-search').val() === petition.get("title");
-                })
-                .get("id");
+        loadPetition: function (event) {
+            event.preventDefault();
+            var query = $('#petition-search').val();
+            var petitionId = Petition.get()
+                .findWhere({
+                    title: query
+                }).id;
             app.router.navigate("dashboard/" + petitionId, true);
         }
     });
