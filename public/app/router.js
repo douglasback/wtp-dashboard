@@ -16,9 +16,9 @@ function(app, Petition, Search, Layout, _, typeahead) {
             "" : "home",
             "dashboard/:id": "dashboard"
         },
-        
+
         initialize: function(){
-    
+
         },
 
         home: function(){
@@ -34,9 +34,9 @@ function(app, Petition, Search, Layout, _, typeahead) {
                 petitions = [], // this will be an array containing the title and ID
                 petitionTitles, // used for the typeahead/autocomplete input
                 ENDPOINT = 'https://api.whitehouse.gov/v1/petitions.jsonp';
-            
+
             $('#spinner').fadeIn();
-            
+
             var loader = function(offset){
                 var offset = offset || 0;
                 $.getJSON(ENDPOINT + '?limit=1000&offset=' + offset + '&callback=?', function(data){
@@ -72,7 +72,7 @@ function(app, Petition, Search, Layout, _, typeahead) {
             console.log("rendering dashboard");
             $("#main").empty().append(dashboard.el);
             dashboard.render();
-            
+
         }
     });
 
