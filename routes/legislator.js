@@ -12,6 +12,6 @@ module.exports = {
 			client.query(signatures_by_date_sql, petition_id, function(er, result){
 					res.json(result);
 			});    
-
+			
     }
 };
