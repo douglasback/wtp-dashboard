@@ -43,6 +43,7 @@ app.get('/', routes.index);
 app.get("/:petition_id/signatures/:grouping", routes.signaturesBy);
 app.get("/:petition_id/sync", routes.sync);
 app.get('/dashboard/:id', dashboard.index);
+app.get("/:petition_id/signature-chart", routes.signaturesByDateChart);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -10,6 +10,40 @@ module.exports = {
         );
     },
 
+	signaturesByDateChart : function(req,res){
+		var mysql = require('mysql');
+		
+		var grouping = "create_dt";
+		var petition_id = req.params.petition_id;
+		var signatures_by_date_sql = 'select ' + grouping +', count(*) as signatures  FROM wtp_data_signatures where petition_id=? group by 1';
+		
+		var client = mysql.createConnection("mysql2://wtpdashboard:differentdefault@wtpdashboard.c1g7kuqneikk.us-east-1.rds.amazonaws.com/wtpdashboard");//(process.env.DATABASE_URL);
+		client.query(signatures_by_date_sql, petition_id, function(er, result){
+			
+		var counter = 0;
+		var data =	[{
+		    "key" : "Signatures" ,
+		    "bar": true,
+		    "values" :[]
+		  },
+		  {
+		    "key" : "Total" ,
+		    "values" : []
+		  }];
+		 for(var i=0; i<result.length; i++){
+			var date = +result[i].create_dt;
+			var sigs = result[i].signatures;
+			counter += sigs;
+			data[0].values.push([date, sigs]);
+			data[1].values.push([date, counter]);
+		 }
+		  res.render("datechart.html", {
+				data : JSON.stringify(data)
+			});
+		});
+		
+	},
+
 	signaturesBy : function(req,res){
 		
 		var mysql = require('mysql');
