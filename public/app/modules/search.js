@@ -2,11 +2,11 @@
 define([
     // Application.
     'app',
-    'router'
+    'modules/petition'
 ],
 
 // Map dependencies from above array.
-function(app, Router) {
+function(app, Petition) {
 
     // Create a new module.
     var Search = app.module();
@@ -24,13 +24,19 @@ function(app, Router) {
     // Default View.
     Search.Views.Layout = Backbone.Layout.extend({
         template: "search",
+        model: Search.Model,
         events: {
             'click #petition-submit' : 'loadPetition'
         },
         
         loadPetition: function(e){
             e.preventDefault();
-            Router.navigate("dashboard");
+            var self = this;
+            console.log(self.$('#petition-search').val());
+            var petitionId = window.petitions.find(function(p){
+                return self.$('#petition-search').val() === p.get("title");
+            }).get("id");
+            app.router.navigate("dashboard/" + petitionId, true);
         }
     });
 
