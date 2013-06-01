@@ -59,20 +59,23 @@ function(app){
         }
 
         var that = this;
-        var petitionData = [];
-        //var petitions = []; // this will be an array containing the title and ID
-        var petitionTitles; // used for the typeahead/autocomplete input
+        // var petitions = []; // this will be an array containing the title and ID
+        // var petitionTitles; // used for the typeahead/autocomplete input
         options.limit = options.limit || 0;
         options.offset = options.offset || 0;
         // Store the success callback in the options. Allow the opportunity to
         // override it.
         options.success = options.success || success;
 
+        /**
+         *
+         */
         function success (xhr, result, request) {
             var resultset = xhr.metadata.resultset;
             var results = xhr.results;
 
-            petitionData = petitionData.concat(results);
+            // Push data into the collection.
+            petitions.add(results);
             // The hard limit on return count is 1000 items. If we hit that limit
             // increment the request frame by 1000 and try to get the next block
             // of results.
@@ -82,7 +85,6 @@ function(app){
                 loader.call(that, options);
             }
             else {
-                petitions.add(petitionData);
                 (options.callback && options.callback.call(that));
             }
         }

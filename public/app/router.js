@@ -40,7 +40,7 @@ function(app, Petition, Search, Layout, _, Bootstrap) {
             Petition.load({
                 uri: endpoint,
                 offset: offset,
-                limit: null,
+                limit: 10,
                 callback: function () {
                     var petitions = Petition.get();
                     $('#petition-search').typeahead({
@@ -56,10 +56,8 @@ function(app, Petition, Search, Layout, _, Bootstrap) {
 
         },
         dashboard: function(id) {
-            console.log(id);
-            console.log(petitions.get(id));
+            var petitions = Petition.get();
             var dashboard = new Petition.Views.Dashboard({ model: petitions.get(id) });
-            console.log("rendering dashboard");
             $("#main").empty().append(dashboard.el);
             dashboard.render();
 
