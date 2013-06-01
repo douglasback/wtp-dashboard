@@ -5,8 +5,10 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , dashboard = require('./routes/dashboard')
   , http = require('http')
   , hbs = require('hbs')
+  , validator = require('express-validator')
   , path = require('path');
 
 var app = module.exports = express();
@@ -18,6 +20,7 @@ app.set('view engine', 'hbs');
 app.engine('.html',require('hbs').__express); //use .html files in /views instead .hbs
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(validator);
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
@@ -37,10 +40,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-// app.get('/users', user.list);
 app.get("/:petition_id/signatures/:grouping", routes.signaturesBy);
-
 app.get("/:petition_id/sync", routes.sync);
+app.get('/dashboard/:id', dashboard.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
