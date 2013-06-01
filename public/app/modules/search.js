@@ -2,11 +2,14 @@
 define([
   // Application.
   'app',
-  'modules/petition'
+  'modules/petition',
+  'backbone',
+  'underscore',
+  'backbone.layoutmanager'
 ],
 
 // Map dependencies from above array.
-function(app) {
+function(app, _, Backbone, LayoutManager) {
 
     // Create a new module.
     var Search = app.module();
@@ -23,7 +26,8 @@ function(app) {
 
     // Default View.
     Search.Views.Layout = Backbone.Layout.extend({
-        template: "search"
+        template: "search",
+        manage: true
         
     });
 

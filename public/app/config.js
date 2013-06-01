@@ -28,6 +28,7 @@ require.config({
     // handlebars: {
     //   exports: "Handlebars"
     // },
+    "backbone.layoutmanager": ["backbone"]
   }
 
 });
