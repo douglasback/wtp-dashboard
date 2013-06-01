@@ -36,5 +36,29 @@ module.exports = {
 	syncPetitions: function(req, res) {
 		var sync = require('../lib/sync');
 		return sync.syncPetitions(res);
+	},
+
+	findPetitions: function(req, res) {
+		var mysql = require('mysql');
+		var client = mysql.createConnection(process.env.DATABASE_URL);
+		var title_like = req.query.title + "%";
+
+		if (title_like === "%") {
+			res.json([]);
+			return;
+		}
+
+        client.query("SELECT id, title FROM wtp_data_petitions WHERE title LIKE ?", title_like, function(err, result) {
+            res.json(result);
+        });
+	},
+
+	petitions: function (req, res) {
+		var mysql = require('mysql');
+		var client = mysql.createConnection(process.env.DATABASE_URL);
+
+        client.query("SELECT * FROM wtp_data_petitions", function(err, results) {
+            res.json({results: results, metadata: {resultset: {}}});
+        });
 	}
 };

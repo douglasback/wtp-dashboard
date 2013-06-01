@@ -103,7 +103,7 @@ function(app){
             // Load the data.
             $.ajax({
                 url: url,
-                dataType: 'jsonp',
+                dataType: 'json',
                 data: params,
                 success: success
             });

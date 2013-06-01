@@ -42,7 +42,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/petitions.json', routes.petitions);
 app.get("/:petition_id/signatures/:grouping", signatures.signaturesBy);
+app.get("/petitions/find", routes.findPetitions);
 app.post("/petitions/sync", routes.syncPetitions);
 app.post("/:petition_id/sync", signatures.sync);
 app.get('/dashboard/:id', dashboard.index);
