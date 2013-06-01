@@ -67,6 +67,7 @@ function(app, Dashboard, Petition, Search, MapFIPS, Layout, _, Bootstrap) {
             });
             dashboard.registerPanel(Petition.Views.Panel, {model: petition});
             dashboard.registerPanel(MapFIPS.Views.Panel, {id: petition.get('id')});
+            dashboard.registerPanel(Petition.Views.Progress, { model: petitions.get(id) });
         }
     });
     return Router;
