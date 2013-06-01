@@ -65,9 +65,11 @@ function(app, Dashboard, Petition, Search, MapFIPS, Layout, _, Bootstrap) {
             var dashboard = new Dashboard.Views.Dashboard({
                 el: $container
             });
+            
             dashboard.registerPanel(Petition.Views.Panel, {model: petition});
             dashboard.registerPanel(MapFIPS.Views.Panel, {id: petition.get('id')});
             dashboard.registerPanel(Petition.Views.Progress, { model: petitions.get(id) });
+            dashboard.registerPanel(Petition.Views.Social, { model: petitions.get(id) })
         }
     });
     return Router;
