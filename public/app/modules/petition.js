@@ -19,6 +19,8 @@ function(app, moment){
         initialize: function(){
             this.setDaysRemaining();
             this.setProgress();
+            this.getShares();
+            
         },
 
         setDaysRemaining: function(){
@@ -38,7 +40,25 @@ function(app, moment){
             this.set({
                 progress: progress
             });
-        }
+        },
+        getShares: function(){
+            var model = this;
+            $.ajax({
+                url: 'http://api.sharedcount.com/?url=' + this.get("url"),
+                dataType: 'json',
+                success: setShares,
+                // crossDomain: true
+
+            });
+            function setShares(data){
+                model.set({
+                    facebookShares: data.Facebook.total_count,
+                    twitterShares: data.Twitter
+                });
+                //console.log(model.attributes);
+            }
+        },
+        
     });
 
     var Collection = Backbone.Collection.extend({
@@ -73,6 +93,16 @@ function(app, moment){
             return this.model.toJSON();
         }
     });
+    Petition.Views.Social = Backbone.View.extend({
+        template: 'social',
+        initialize: function(){
+            this.render();
+            this.model.bind("change", this.render);
+        },
+        serialize: function() {
+            return this.model.toJSON();
+        }
+    })
 
     // Initialize the collection.
 
