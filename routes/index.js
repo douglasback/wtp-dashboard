@@ -1,9 +1,9 @@
 module.exports = {
-    
+
     index: function(req,res){
-        // var env = process.env.ENVIRONMENT === "production" ? 
-            
-        res.render('index.html', { 
+        // var env = process.env.ENVIRONMENT === "production" ?
+
+        res.render('index.html', {
             title: "We the People Dashboard",
             scripts: '[typeahead.js]'
             }
@@ -13,7 +13,7 @@ module.exports = {
 	map: function(req,res){
 		res.render("map.html", { petition_id : req.params.petition_id , layout: false });
 	},
-	
+
 	twitter : function(req, res){
 
 		var util = require('util'),
@@ -29,9 +29,12 @@ module.exports = {
 		    res.json(data);
 		});
 		console.log(x);
-		
-		
+
+
+	},
+
+	syncPetitions: function(req, res) {
+		var sync = require('../lib/sync');
+		return sync.syncPetitions(res);
 	}
-
-
 };

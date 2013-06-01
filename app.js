@@ -31,7 +31,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req,res,next){
         // res.locals.stylesheet = app.get('env') === 'development' ? 'styles.dev.css' : 'styles.css';
-        // res.locals.google_analytics_id = process.env.GOOGLE_ANALYTICS_ID || undefined; 
+        // res.locals.google_analytics_id = process.env.GOOGLE_ANALYTICS_ID || undefined;
         next();
 });
 
@@ -43,7 +43,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get("/:petition_id/signatures/:grouping", signatures.signaturesBy);
-app.get("/:petition_id/sync", signatures.sync);
+app.post("/petitions/sync", routes.syncPetitions);
+app.post("/:petition_id/sync", signatures.sync);
 app.get('/dashboard/:id', dashboard.index);
 app.get("/:petition_id/signature-chart", signatures.signaturesByDateChart);
 app.get("/twitter", routes.twitter);
