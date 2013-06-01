@@ -41,7 +41,7 @@ module.exports = {
 
 		var grouping = req.params.grouping === "zip" ? "zip" : "create_dt";
 		var petition_id = req.params.petition_id;
-		var signatures_by_fips_sql = 'SELECT fips, IFNULL(signatures,0) FROM (SELECT z2f.fip, count(*) as signatures FROM wtp_data_signatures sig INNER JOIN zip_to_fip z2f ON sig.zip=z2f.zipcode  WHERE petition_id=? GROUP BY z2f.fip) x RIGHT JOIN fips ON fips=fip;';
+		var signatures_by_fips_sql = 'SELECT fips fip, IFNULL(signatures,0) signatures FROM (SELECT z2f.fip, count(*) as signatures FROM wtp_data_signatures sig INNER JOIN zip_to_fip z2f ON sig.zip=z2f.zipcode  WHERE petition_id=? GROUP BY z2f.fip) x RIGHT JOIN fips ON fips=fip;';
 
 		var client = mysql.createConnection(process.env.DATABASE_URL);
 		var query = client.query(signatures_by_fips_sql, petition_id, function(er, result){
