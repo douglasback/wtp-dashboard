@@ -51,8 +51,11 @@ module.exports = {
 		
 		var grouping = req.params.grouping === "zip" ? "zip" : "create_dt";
 		var petition_id = req.params.petition_id;
-		var signatures_by_date_sql = 'select fip, count(*) as signatures FROM wtp_data_signatures inner join zip_to_fip on zip=zipcode WHERE petition_id=? GROUP BY 1';
-		
+		var signatures_by_date_sql = 'SELECT z2f.fip, count(*) as signatures ' +
+									 'FROM wtp_data_signatures sig' +
+									 'INNER JOIN zip_to_fip z2f ON sig.zip=z2f.zipcode ' +
+									 'WHERE petition_id=? GROUP BY z2f.fip';
+
 		var client = mysql.createConnection(process.env.DATABASE_URL);
 		client.query(signatures_by_date_sql, petition_id, function(er, result){
 				var tsv = ["id\tsignatures"];
