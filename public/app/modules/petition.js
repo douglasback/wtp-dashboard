@@ -159,10 +159,12 @@ function(app, moment){
                 offset: options.offset || 0,
                 limit: options.limit || 0
             };
+            var counter = 0;
             // Load the data.
             $.ajax({
                 url: url,
                 dataType: 'jsonp',
+                cache: true,
                 data: params,
                 success: success
             });

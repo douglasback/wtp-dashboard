@@ -20,11 +20,11 @@ function(app, Petition) {
         },
 
         draw: function () {
-            var $iframe = $('<iframe frameborder="0" scrolling="auto" allowtransparency="true"></iframe>')
+            var $iframe = $('<iframe frameborder="0" scrolling="no" allowtransparency="true"></iframe>')
                 .attr({
                     src: location.origin + '/' + this.petitionID + '/map',
                     width: '1024',
-                    height: '768'
+                    height: '500'
                 })
                 .appendTo(this.$el);
             return this;
