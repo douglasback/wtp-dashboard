@@ -12,7 +12,7 @@ petition.io is an analytics dashboard for viewing petition data for the We The P
 
 - Bootstrap Boilerplate
 - Zip to Fip data: https://github.com/gitpullgravity/zip2fips/
-- Sunlight Labs: http://sunlightlabs.github.io/congress/
+- Sunlight Labs: https://sunlightlabs.github.io/congress/
 - Census.gov: http://www.census.gov/popest/data/datasets.html
 - mbostock's d3 and Choropleth http://bl.ocks.org/mbostock/4060606
 - Novus NVD3: https://github.com/novus/nvd3
